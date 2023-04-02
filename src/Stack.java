@@ -13,7 +13,7 @@ public class Stack {
 
     public String pop(){
         if (topIndex < 0){
-            throw new RuntimeException("Tried to pop a char although stack is empty!");
+            throw new RuntimeException("Tried to pop an element although stack is empty!");
         }
 
         String poppedChar = stack[topIndex];
