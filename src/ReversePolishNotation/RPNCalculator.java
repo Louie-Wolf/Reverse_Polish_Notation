@@ -9,7 +9,7 @@ public abstract class RPNCalculator {
         int WAITING_TIME = 200;
         String[] splitTokens = tokens.split("");
         System.out.println("Tokens received: " + Arrays.toString(splitTokens));
-        Stack stack = new Stack(15);
+        Stack stack = new Stack(splitTokens.length);
 
         //VARS
         int leftValue, rightValue, intermediateResult;
