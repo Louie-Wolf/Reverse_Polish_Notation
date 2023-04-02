@@ -4,14 +4,23 @@ import java.util.Arrays;
 
 public abstract class RPNCalculator {
 
+    /**
+     * Calculates a mathematical calculation written in reverse polish notation. And prints it to the console.
+     *
+     * @param tokens specifies the calculation as String.
+     * @param stepByStep specifies if the calculation should be done step by step.
+     * @return the result string.
+     * @throws IllegalArgumentException if the notation was incorrect formatted.
+     * @throws InterruptedException if the thread was interrupted.
+     */
     public static String calculate(String tokens, boolean stepByStep) throws IllegalArgumentException, InterruptedException {
-        //SETUP
+        //Setup
         int WAITING_TIME = 200;
         String[] splitTokens = tokens.split("");
         System.out.println("Tokens received: " + Arrays.toString(splitTokens));
         Stack stack = new Stack(splitTokens.length);
 
-        //VARS
+        //Variables for calculation
         int leftValue, rightValue, intermediateResult;
         String result = "";
         String operand;
@@ -25,6 +34,7 @@ public abstract class RPNCalculator {
                     System.out.println("Value Token pushed.\n Stack: " + stack);
                     Thread.sleep(WAITING_TIME);
                 }
+
                 continue;
             } else {
                 operand = splitTokens[i];
@@ -55,7 +65,8 @@ public abstract class RPNCalculator {
             if (operand.equals("+")){
                 intermediateResult = leftValue + rightValue;
                 result = String.valueOf(intermediateResult);
-                //Push back result into stack
+
+                //Pushs back the result into stack
                 stack.push(result);
 
                 if (stepByStep){
@@ -67,6 +78,8 @@ public abstract class RPNCalculator {
             else if (operand.equals("*")){
                 intermediateResult = leftValue * rightValue;
                 result = String.valueOf(intermediateResult);
+
+                //Pushs back the result into stack
                 stack.push(result);
 
                 if (stepByStep){
@@ -76,7 +89,8 @@ public abstract class RPNCalculator {
                 }
             }
         }
-        //Check if there is only one number left
+
+        //Checks if there is only one number left
         if (stack.getTopIndex() != 1){
             throw new IllegalArgumentException("Too less operands! There is more than one number one the stack!");
         }
