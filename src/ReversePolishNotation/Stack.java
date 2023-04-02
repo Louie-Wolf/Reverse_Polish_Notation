@@ -4,6 +4,11 @@ import java.util.Arrays;
 
 public class Stack {
     private final String[] stack;
+
+    public int getTopIndex() {
+        return topIndex;
+    }
+
     private int topIndex = 0;
 
     public Stack(int stackSize) {
@@ -17,7 +22,7 @@ public class Stack {
 
     public String pop(){
         if (topIndex < 0){
-            throw new RuntimeException("Tried to pop an element although stack is empty!");
+            throw new IllegalArgumentException("Tried to pop an element although stack is empty!");
         }
 
         String poppedChar = stack[topIndex];
@@ -29,7 +34,7 @@ public class Stack {
     public void push(String pushedChar){
         topIndex++;
         if (topIndex >= stack.length - 1){
-            throw new RuntimeException("ReversePolishNotation.Stack is full!");
+            throw new IllegalArgumentException("ReversePolishNotation.Stack is full!");
         }
         stack[topIndex] = pushedChar;
     }

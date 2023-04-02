@@ -17,8 +17,8 @@ class RPNCalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"34+*", "8+9+7*2*"})
+    @ValueSource(strings = {"34+*", "8+9+7*2*", "987+", "1214+"})
     void calculateIncorrectNotation(String input) {
-        assertThrows(RuntimeException.class, ()-> RPNCalculator.calculate(input, false),"Incorrect Notation");
+        assertThrows(IllegalArgumentException.class, ()-> RPNCalculator.calculate(input, false),"Incorrect Notation");
     }
 }

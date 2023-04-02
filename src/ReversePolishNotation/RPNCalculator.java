@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public abstract class RPNCalculator {
 
-    public static String calculate(String tokens, boolean stepByStep) throws RuntimeException, InterruptedException {
+    public static String calculate(String tokens, boolean stepByStep) throws IllegalArgumentException, InterruptedException {
         //SETUP
         int WAITING_TIME = 200;
         String[] splitTokens = tokens.split("");
@@ -76,6 +76,11 @@ public abstract class RPNCalculator {
                 }
             }
         }
+        //Check if there is only one number left
+        if (stack.getTopIndex() != 1){
+            throw new IllegalArgumentException("Too less operands! There is more than one number one the stack!");
+        }
+
 
         if (stepByStep){
             System.out.println("<==============>");
