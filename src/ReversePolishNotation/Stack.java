@@ -6,8 +6,8 @@ public class Stack {
     private final String[] stack;
     private int topIndex = 0;
 
-    public Stack() {
-        stack = new String[25];
+    public Stack(int stackSize) {
+        stack = new String[stackSize];
         stack[0] = "$";
         for (int i = 1; i < stack.length; i++) {
             stack[i] = "\0";
