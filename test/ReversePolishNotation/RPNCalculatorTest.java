@@ -12,7 +12,7 @@ class RPNCalculatorTest {
 
     @ParameterizedTest
     @CsvSource({"34+62+89+43+***, 6664","31+78+987+1214++7++++++, 58"})
-    void calculateCorrectNotation(String input, String expected) {
+    void calculateCorrectNotation(String input, String expected) throws InterruptedException {
         assertEquals(String.valueOf(expected), RPNCalculator.calculate(input, false));
     }
 

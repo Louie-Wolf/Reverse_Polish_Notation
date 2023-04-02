@@ -1,5 +1,7 @@
 package ReversePolishNotation;
 
+import java.util.Arrays;
+
 public class Stack {
     private final String[] stack;
     private int topIndex = 0;
@@ -30,5 +32,10 @@ public class Stack {
             throw new RuntimeException("ReversePolishNotation.Stack is full!");
         }
         stack[topIndex] = pushedChar;
+    }
+
+    @Override
+    public String toString(){
+        return Arrays.toString(stack);
     }
 }
