@@ -1,3 +1,5 @@
+package ReversePolishNotation;
+
 public class Stack {
     private final String[] stack;
     private int topIndex = 0;
@@ -25,7 +27,7 @@ public class Stack {
     public void push(String pushedChar){
         topIndex++;
         if (topIndex >= stack.length - 1){
-            throw new RuntimeException("Stack is full!");
+            throw new RuntimeException("ReversePolishNotation.Stack is full!");
         }
         stack[topIndex] = pushedChar;
     }

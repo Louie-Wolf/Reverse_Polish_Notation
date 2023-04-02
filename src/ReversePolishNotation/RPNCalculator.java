@@ -1,8 +1,10 @@
+package ReversePolishNotation;
+
 import java.util.Arrays;
 
 public abstract class RPNCalculator {
 
-    public static void calculate(String tokens, boolean stepByStep){
+    public static String calculate(String tokens, boolean stepByStep) throws RuntimeException{
         //SETUP
         String[] splitTokens = tokens.split("");
         System.out.println("Tokens received: " + Arrays.toString(splitTokens));
@@ -22,9 +24,15 @@ public abstract class RPNCalculator {
                 operand = splitTokens[i];
             }
 
-            //If it is an operand pop the last two values
-            leftValue = Integer.parseInt(stack.pop());
-            rightValue = Integer.parseInt(stack.pop());
+            //If it is an operand try to pop the last two values
+            try {
+                leftValue = Integer.parseInt(stack.pop());
+                rightValue = Integer.parseInt(stack.pop());
+            } catch (RuntimeException e){
+                System.err.println("There is no value on the stack left to perform the operation");
+                break;
+            }
+
 
             //Perform math calculation depending on operand
             if (operand.equals("+")){
@@ -39,7 +47,8 @@ public abstract class RPNCalculator {
                 stack.push(result);
             }
         }
-
-        System.out.println(stack.pop());
+        String endResult = stack.pop();
+        System.out.println(endResult);
+        return endResult;
     }
 }
